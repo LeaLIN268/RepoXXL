@@ -1,0 +1,24 @@
+{
+	"name": "CustomerCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLSg2_LinkedS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Customer.csv",
+				"folderPath": "customer/year/month=12/day=21",
+				"fileSystem": "container22"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

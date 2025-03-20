@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "pipelineAzure",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "AventureSQL_to_ADLSg2",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -13,33 +13,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					null,
-					{
-						"name": "Source",
-						"value": "files/sales/csv/2021.csv"
-					},
-					{
-						"name": "Destination",
-						"value": "files//"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -59,13 +43,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "Customer_SQL_DS",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText3",
+						"referenceName": "CustomerCSV",
 						"type": "DatasetReference"
 					}
 				]
